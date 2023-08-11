@@ -1,8 +1,9 @@
 import React from "react";
 import { RecoilRoot } from "recoil";
-import TextInput from "./TextInput";
-import CharacterCounter from "./CharacterCounter";
+import TextInput from "./components/InputTest/TextInput";
+import CharacterCounter from "./components/InputTest/CharacterCounter";
 import "./App.css";
+import TodoList from "../src/components/Todo/TodoList";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
         <TextInput />
         <CharacterCounter />
       </div>
+      <TodoList />
     </RecoilRoot>
   );
 };
