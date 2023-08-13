@@ -2,44 +2,18 @@ import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
 const GlobalStyles = createGlobalStyle` 
-@import url('https://fonts.googleapis.com/css2?family=Crafty+Girls&family=Permanent+Marker&family=Signika&family=Walter+Turncoat&display=swap');
-@font-face {
-    font-family: 'Crafty Girls';
-    font-style: normal;
-    font-weight: normal;
-    src: url('https://fonts.googleapis.com/css2?family=Crafty+Girls&display=swap') format('truetype');
-  }
-  
-  @font-face {
-    font-family: 'Permanent Marker';
-    font-style: normal;
-    font-weight: normal;
-    src: url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap') format('truetype');
-  }
-
-  @font-face {
-    font-family: 'Signika';
-    font-style: normal;
-    font-weight: normal;
-    src: url('https://fonts.googleapis.com/css2?family=Signika&display=swap') format('truetype');
-  }
-
-  @font-face {
-    font-family: 'Walter Turncoat';
-    font-style: normal;
-    font-weight: normal;
-    src: url('https://fonts.googleapis.com/css2?family=Walter+Turncoat&display=swap') format('truetype');
-  }
   
   ${reset} 
+
+  * {
+    box-sizing: border-box;
+  }
 
   a {
     text-decoration: none;
     color: inherit;
   }
-  * {
-    box-sizing: border-box;
-  }
+
   input, textarea { 
     -moz-user-select: auto;
     -webkit-user-select: auto;
