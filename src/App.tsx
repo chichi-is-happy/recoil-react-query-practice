@@ -7,8 +7,8 @@ import TodoList from "./components/RecoilTodo/TodoList";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Tab from "./components/Tab";
 import styled from "styled-components";
-import DevTools from "./components/ReactQueryTodo/DevTools";
-// import { QueryClient, QueryClientProvider } from "react-query";
+import Todo from "./components/ReactQueryTodo/Todo";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // import { ReactQueryDevtools } from "react-query/devtools";
 const ContainerStyle = styled.div`
   width: 100%;
@@ -44,26 +44,30 @@ const ContentStyle = styled.div`
   align-items: center;
   font-family: "Walter Turncoat", cursive;
 `;
+const queryClient = new QueryClient();
+
 const App = () => {
   return (
-    <Router>
-      <ContainerStyle>
-        <MobileStyle>
-          <HeaderStyle>
-            <Tab />
-          </HeaderStyle>
-          <ContentStyle>
-            <RecoilRoot>
-              <Routes>
-                <Route path="/input" element={<TextInput />} />
-                <Route path="/list" element={<TodoList />} />
-                <Route path="/devtools" element={<DevTools />} />
-              </Routes>
-            </RecoilRoot>
-          </ContentStyle>
-        </MobileStyle>
-      </ContainerStyle>
-    </Router>
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <ContainerStyle>
+          <MobileStyle>
+            <HeaderStyle>
+              <Tab />
+            </HeaderStyle>
+            <ContentStyle>
+              <RecoilRoot>
+                <Routes>
+                  <Route path="/input" element={<TextInput />} />
+                  <Route path="/list" element={<TodoList />} />
+                  <Route path="/test" element={<Todo />} />
+                </Routes>
+              </RecoilRoot>
+            </ContentStyle>
+          </MobileStyle>
+        </ContainerStyle>
+      </Router>
+    </QueryClientProvider>
   );
 };
 

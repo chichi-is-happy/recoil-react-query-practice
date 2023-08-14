@@ -49,7 +49,7 @@ const Tab = () => {
         </MenuIconStyle>
 
         <MenuIconStyle>
-          <Link to="/devtools">DevTools</Link>
+          <Link to="/test">Test</Link>
         </MenuIconStyle>
       </MenuBox>
     </HeaderStyle>
