@@ -66,6 +66,20 @@ const TodoCreator = () => {
     }
   };
 
+  const handleEnterKey = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter" && inputValue.trim() !== "") {
+      const lastTodo = todoList[todoList.length - 1];
+      const newId = lastTodo ? lastTodo.id + 1 : 1;
+
+      addMutation.mutate({
+        id: newId,
+        userId: 1,
+        todoItem: inputValue,
+        isCompleted: false,
+      });
+    }
+  };
+
   const onChange = ({ target: { value } }: any) => {
     setInputValue(value);
   };
@@ -77,6 +91,7 @@ const TodoCreator = () => {
         value={inputValue}
         onChange={onChange}
         placeholder="할 일을 입력해 주세요."
+        onKeyDown={handleEnterKey}
         autoFocus
       />
       <Button onClick={addItem}>Add</Button>

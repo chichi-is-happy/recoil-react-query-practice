@@ -15,10 +15,13 @@ const ButtonGroup = styled.div`
 `;
 
 const TextInput = styled.input`
-  flex: 0.6;
-  font-size: 21px;
-  color: #495057;
+  border-radius: 4px;
+  border: 1px solid #dee2e6;
+  width: 100%;
+  outline: none;
+  font-size: 19px;
   box-sizing: border-box;
+  /* padding: 10px; */
 `;
 
 const Text = styled.div`
@@ -132,7 +135,7 @@ const TodoItem: React.FC<{ todoItem: TodoItemProps }> = ({ todoItem }) => {
               onKeyDown={handleEnterKey}
               onChange={editItemText}
             />
-            <ButtonGroup onClick={handleEditSave}>Save</ButtonGroup>
+            <button onClick={handleEditSave}>Save</button>
           </>
         )}
         {editMode === false && (
