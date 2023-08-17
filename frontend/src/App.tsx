@@ -1,7 +1,5 @@
-import React from "react";
 import { RecoilRoot } from "recoil";
 import TextInput from "./components/InputTest/TextInput";
-import CharacterCounter from "./components/InputTest/CharacterCounter";
 import "./App.css";
 import TodoList from "./components/RecoilTodo/TodoList";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -9,14 +7,13 @@ import Tab from "./components/Tab";
 import styled from "styled-components";
 import Todo from "./components/ReactQueryTodo/TodoList";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-// import { ReactQueryDevtools } from "react-query/devtools";
 const ContainerStyle = styled.div`
-  width: 100%;
   min-height: 100vh;
   background-color: #fdfdfd;
   display: grid;
   justify-content: center;
-  /* grid-template-rows: auto 1fr auto; */
+  margin: 0 auto;
+  border-radius: 16px;
 `;
 
 const MobileStyle = styled.div`
@@ -24,7 +21,6 @@ const MobileStyle = styled.div`
   border: 10px solid #fff3f7;
   border-radius: 10%;
   align-items: center;
-  justify-content: center;
   overflow: hidden;
 `;
 
@@ -39,9 +35,6 @@ const HeaderStyle = styled.header`
 const ContentStyle = styled.div`
   padding: 1rem;
   display: grid;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
   font-family: "Walter Turncoat", cursive;
 `;
 const queryClient = new QueryClient();

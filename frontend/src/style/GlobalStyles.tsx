@@ -7,6 +7,7 @@ const GlobalStyles = createGlobalStyle`
 
   * {
     box-sizing: border-box;
+    font-family: "Walter Turncoat", cursive;
   }
 
   a {
@@ -45,7 +46,7 @@ const GlobalStyles = createGlobalStyle`
     border: 0;
     font-size: 100%;
     vertical-align: baseline;
-
+    font-family: "Walter Turncoat", cursive;
   }
 
 

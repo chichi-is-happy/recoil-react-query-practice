@@ -11,7 +11,6 @@ const HeaderStyle = styled.div`
 const TitleBox = styled.h1`
   font-size: 30px;
   margin-bottom: 20px;
-  font-family: "Walter Turncoat", cursive;
   font-size: 22px;
 `;
 
@@ -31,7 +30,6 @@ const MenuIconStyle = styled.li`
   align-content: center;
   background-color: #fdfdfd;
   color: #727272;
-  font-family: "Walter Turncoat", cursive;
   font-size: 0.8rem;
 `;
 
