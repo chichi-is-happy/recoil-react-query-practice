@@ -79,7 +79,7 @@ const TodoCreator = () => {
           todoItem: inputValue,
           isCompleted: false,
         });
-        setInputValue(""); // 투두 추가 후 입력값 초기화
+        setInputValue("");
       }
     }
   };

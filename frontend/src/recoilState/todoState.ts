@@ -11,5 +11,5 @@ type DefaultValue = Todo[];
 
 export const testTodoListState = atom<DefaultValue>({
   key: "testTodoListState",
-  default: [], // 기본값 설정
+  default: [],
 });

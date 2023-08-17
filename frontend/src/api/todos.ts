@@ -7,7 +7,6 @@ export interface Todo {
   isCompleted: boolean;
 }
 
-// const endPoint = "https://koreanjson.com/todos";
 const endPoint = "http://localhost:4000/todos";
 export const fetchData = () => {
   return axios
