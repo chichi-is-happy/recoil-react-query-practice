@@ -112,8 +112,8 @@ const TodoItem: React.FC<{ todoItem: TodoItemProps }> = ({ todoItem }) => {
     if (event.key === "Enter") {
       editMutation.mutate({
         id: todoItem.id,
-        todoItem: todoItem.todoItem,
-        isCompleted: !todoItem.isCompleted,
+        todoItem: inputValue,
+        isCompleted: todoItem.isCompleted,
       });
       setEditMode(false);
       setInputValue("");
