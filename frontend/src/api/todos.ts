@@ -4,7 +4,7 @@ export interface Todo {
   id: number;
   userId: number;
   todoItem: string;
-  completed: boolean;
+  isCompleted: boolean;
 }
 
 // const endPoint = "https://koreanjson.com/todos";
@@ -23,6 +23,26 @@ export const addTodo = (newTodo: Todo) => {
   return axios
     .post(endPoint, newTodo)
     .then((response) => response.data)
+    .catch((error) => {
+      console.log("에러: ", error);
+      throw error;
+    });
+};
+
+export const editTodo = (updateTodo: {
+  id: number;
+  todoItem: string;
+  isCompleted: boolean;
+}) => {
+  return axios
+    .put(`${endPoint}/${updateTodo.id}`, {
+      todoItem: updateTodo.todoItem,
+      isCompleted: updateTodo.isCompleted,
+    })
+    .then((response) => {
+      console.log("요청이 성공했습니다.", response);
+      return response.data;
+    })
     .catch((error) => {
       console.log("에러: ", error);
       throw error;

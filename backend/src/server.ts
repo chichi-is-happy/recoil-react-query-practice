@@ -9,7 +9,7 @@ interface Todo {
   id: number;
   userId: number;
   todoItem: string;
-  completed: boolean;
+  isCompleted: boolean;
 }
 
 const todos: Todo[] = [];
@@ -23,6 +23,22 @@ app.post("/todos", (req: Request, res: Response) => {
   const newTodo: Todo = { ...req.body, id: idCounter++ };
   todos.push(newTodo);
   res.status(201).json(newTodo);
+});
+
+app.put("/todos/:id", (req: Request, res: Response) => {
+  const { id } = req.params;
+  const { todoItem, isCompleted } = req.body;
+
+  const todoToUpdate = todos.find((todo) => todo.id === +id);
+
+  if (!todoToUpdate) {
+    return res.status(404).json({ message: "Todo를 찾을 수 없습니다." });
+  }
+
+  todoToUpdate.todoItem = todoItem;
+  todoToUpdate.isCompleted = isCompleted;
+
+  res.json(todoToUpdate);
 });
 
 const PORT = process.env.PORT || 4000;

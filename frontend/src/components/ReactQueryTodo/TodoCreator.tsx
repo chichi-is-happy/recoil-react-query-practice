@@ -31,7 +31,7 @@ const TodoCreator = () => {
         id: newId,
         userId: 1,
         todoItem: inputValue,
-        completed: false,
+        isCompleted: false,
       });
     }
   };
