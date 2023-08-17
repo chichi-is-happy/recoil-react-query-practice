@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { editTodo } from "../../api/todos";
+import { editTodo, deleteTodo } from "../../api/todos";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import styled from "styled-components";
 
@@ -67,6 +67,20 @@ const TodoItem: React.FC<{ todoItem: TodoItemProps }> = ({ todoItem }) => {
     },
   });
 
+  const deleteMutation = useMutation(deleteTodo, {
+    onSuccess: (data) => {
+      queryClient.setQueryData(
+        ["fetchData"],
+        (oldTodoList: TodoItemProps[] | undefined) => {
+          if (oldTodoList) {
+            return oldTodoList.filter((oldTodo) => oldTodo.id !== todoItem.id);
+          }
+          return [];
+        }
+      );
+    },
+  });
+
   const editItemText = ({
     target: { value },
   }: React.ChangeEvent<HTMLInputElement>) => {
@@ -103,10 +117,9 @@ const TodoItem: React.FC<{ todoItem: TodoItemProps }> = ({ todoItem }) => {
     }
   };
 
-  // const deleteItem = () => {
-  //   const newList = removeItemAtIndex(todoList, index);
-  //   setTodoList(newList);
-  // };
+  const deleteItem = () => {
+    deleteMutation.mutate(todoItem.id);
+  };
 
   return (
     <>
@@ -141,7 +154,7 @@ const TodoItem: React.FC<{ todoItem: TodoItemProps }> = ({ todoItem }) => {
                 checked={todoItem.isCompleted}
                 onChange={toggleItemCompletion}
               />
-              <button>X</button>
+              <button onClick={deleteItem}>X</button>
             </ButtonGroup>
           </>
         )}

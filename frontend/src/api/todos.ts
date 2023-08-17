@@ -49,4 +49,17 @@ export const editTodo = (updateTodo: {
     });
 };
 
+export const deleteTodo = (id: number) => {
+  return axios
+    .delete(`${endPoint}/${id}`)
+    .then((response) => {
+      console.log("요청이 성공했습니다.", response);
+      return response.data;
+    })
+    .catch((error) => {
+      console.log("에러: ", error);
+      throw error;
+    });
+};
+
 export default fetchData;

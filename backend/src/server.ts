@@ -41,6 +41,20 @@ app.put("/todos/:id", (req: Request, res: Response) => {
   res.json(todoToUpdate);
 });
 
+app.delete("/todos/:id", (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  const todoToDelete = todos.find((todo) => todo.id === +id);
+
+  if (!todoToDelete) {
+    return res.status(404).json({ message: "Todo를 찾을 수 없습니다." });
+  }
+
+  const deletedTodoList = todos.filter((todo) => todo.id !== todoToDelete.id);
+
+  res.json(deletedTodoList);
+});
+
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
