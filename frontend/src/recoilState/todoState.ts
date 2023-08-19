@@ -1,15 +1,37 @@
-import { atom } from "recoil";
+import { atom, selector } from "recoil";
 
 type Todo = {
   id: number;
   userId: number;
   todoItem: string;
-  completed: boolean;
+  isCompleted: boolean;
 };
 
 type DefaultValue = Todo[];
 
-export const testTodoListState = atom<DefaultValue>({
-  key: "testTodoListState",
+export const todoStateTest = atom<DefaultValue>({
+  key: "TodoStateTest",
   default: [],
+});
+
+export const todoFilterState = atom({
+  key: "todoFilterState",
+  default: "All",
+});
+
+export const filteredTodoState = selector({
+  key: "filteredTodoState",
+  get: ({ get }) => {
+    const filter = get(todoFilterState);
+    const list = get(todoStateTest);
+
+    switch (filter) {
+      case "Open":
+        return list.filter((todo) => !todo.isCompleted);
+      case "Closed":
+        return list.filter((todo) => todo.isCompleted);
+      default:
+        return list;
+    }
+  },
 });
